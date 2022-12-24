@@ -1,0 +1,45 @@
+<!-- <div *ngFor="let game of gameList">
+
+    <h3>{{ game.title }}</h3>
+    <p>{{ game.releaseDate }}</p>
+    <a href="{{ game.storeUrl }}"><img src="{{ game.imageUrl}}" alt="{{ game.title }} image"></a>
+    <p>{{ game.description }}</p>
+</div> -->
+
+<section class="example-container mat-elevation-z8">
+
+    <table mat-table [dataSource]="gameList">
+
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Game Title </th>
+            <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="releaseDate">
+            <th mat-header-cell *matHeaderCellDef> Release Date </th>
+            <td mat-cell *matCellDef="let element"> {{ element.releaseDate }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="storeUrl">
+            <th mat-header-cell *matHeaderCellDef> Steam Link </th>
+            <td mat-cell *matCellDef="let element"> {{ element.storeUrl }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="imageUrl">
+            <th mat-header-cell *matHeaderCellDef> Banner Image </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a href="{{ element.storeUrl }}">
+                    <img src="{{ element.imageUrl}}" alt="{{ element.title }} image">
+                </a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</section>
